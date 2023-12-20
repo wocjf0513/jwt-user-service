@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  redis:
+    container_name: redis
+    image: redis:6
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/config:/usr/local/conf/redis.cnf
+      - ./redis/data:/data
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    restart: on-failure
